@@ -1,8 +1,16 @@
 <?php
+ini_set("log_errors",TRUE);
+$log_file="error.log";
+ini_set("error_log",$log_file);
+
 class StateCensusAnalyser
 {
-    //Using constructor for welcome message
-    function __construct()
+
+    Protected $state_census_data_array=array();
+    Protected $whole_state_census_data_array=array();
+    Protected $state_census_header=array();
+    //Method for welcome message
+    function welcome_message()
     {
         echo "=========================================================\n";
         echo "Welcome to Indian Census Analyser Problem \n";
@@ -21,43 +29,57 @@ class StateCensusAnalyser
             }
             else
             {
-                $state_census_data_array=array();
-                $whole_state_census_data_array=array();
                 $state_census_file = fopen("StateCensusData.csv", "r");      //Opening CSV file
                 $state_census_chunk_size = 1024*1024;                        //Size(1MB) to chunk file 
                 $row=0;
                 if(!feof($state_census_file))
                 {
+                    //Getting file data according to chunk size
                     while(($state_census_data = fgetcsv($state_census_file, $state_census_chunk_size)) !== false)
                     {
                         $column_count=count($state_census_data);      //Getting count of array
-                        //Getting file data according to chunk size
-                        // array_push($state_census_data_array,$state_census_data);
-                        for($i=0;$i<$column_count;$i++)
+                        $j=0;
+                        for($i=$row+1;$i<$column_count;$i++)
                         {
-                            // $state_census_data_array[$row][]=$state_census_data[$i];
-                            $state_census_data_array[]=$state_census_data[$i];
-                            
+                            //Putting Valius into an array
+                            $this->state_census_data_array[$state_census_data[$row]][]=$state_census_data[$i];
+                            //Putting all data of file as array
+                            $this->whole_state_census_data_array[]=$state_census_data[$j];
+                            $j++;
                         }
-                        $row++;
-
                     }
                     
                 }
-                return $state_census_data_array;
+                // return $this->state_census_data_array;
+                return $this->whole_state_census_data_array;
                 fclose($state_census_file);      //Closing File
 
             }
         }
-        catch(Exception $err)
+        catch(Exception $state_cencus_err)
         {
-            //Getting error message into a variable
-            $error_message=$err->getMessage();
+            //Gettinstate_cencus_g error message into a variable
+            return $state_cencus_err->getMessage();
         }
+    }
+    function sort_state_census_analyser_data()
+    {
+        for($j=0;$j<4;$j++)
+        {
+            $k=1;
+            $this->state_census_header[$j]=$this->whole_state_census_data_array[$j];
+            $k++;
+        }
+        array_shift($this->state_census_data_array);
+        ksort($this->state_census_data_array);
+        return $this->state_census_data_array;
     }
 }
 class CSVStateCensus
 {
+    Protected $state_code_data_array=array();
+    Protected $whole_state_code_data_array=array();
+    Protected $state_code_header=array();
     //Method to load CSV data
     function load_state_code_csv_data()
     {
@@ -70,26 +92,29 @@ class CSVStateCensus
             }
             else
             {
-                $state_code_data_array=array();
                 $state_code_file = fopen("StateCode.csv", "r");      //Opening CSV file
                 $state_code_chunk_size = 1024*1024;                        //Size(1MB) to chunk file 
+                $row=1;
                 if(!feof($state_code_file))
                 {
+                    //Getting file data according to chunk size
                     while(($state_code_data = fgetcsv($state_code_file, $state_code_chunk_size)) !== false)
                     {
                         $column_count=count($state_code_data);      //Getting count of array
-                        //Getting file data according to chunk size
-                        // array_push($state_code_data_array,$state_code_data);
-
-                        for($i=0;$i<$column_count;$i++)
+                        $j=0;
+                        for($i=$row+1;$i<$column_count;$i++)
                         {
-                            // $state_code_data_array[$row][]=$state_code_data[$i];
-                            $state_code_data_array[]=$state_code_data[$i];
+
+                            //Putting Valius into an array
+                            $this->state_code_data_array[$state_code_data[$row]][]=$state_code_data[$i];
+                            //Putting all data of file as array
+                            $this->whole_state_code_data_array[]=$state_code_data[$j];
+                            $j++;
                             
                         }
                     }
                 }
-                return $state_code_data_array;
+                return $this->state_code_data_array;
                 
                 fclose($state_code_file);      //Closing File
             }
@@ -97,21 +122,19 @@ class CSVStateCensus
         catch(Exception $state_code_err)
         {
             //Getting error message into a variable
-            $error_message=$state_code_err->getMessage();
+            return $state_code_err->getMessage();
         }
     }
 
 
     function match_csv_data()
     {
-        $arr=$this->load_state_code_csv_data();
+        $state_code_array=$this->load_state_code_csv_data();
         $state_census_analyser_object=new StateCensusAnalyser();
+        $state_census_array=$state_census_analyser_object->load_state_census_csv_data();
+        return [$state_census_array, $state_code_array];
 
     }
 }
-//Object Declaration
-$csv_state_census=new CSVStateCensus();     //Creating object of CSVStateCensus
-
-$csv_state_census->match_csv_data();     //Calling method CSVStateCensus
 
 ?>
