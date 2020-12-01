@@ -107,7 +107,13 @@ class CensusAnalyser
 /**
  * Object Declaration
  */
+<<<<<<< HEAD
 $analyser_object=new CensusAnalyser();
 $analyser_object->load_csv_file("../resources/StateCensusData.csv");
 $analyser_object->sort_alphabetically();
+=======
+// $analyser_object=new CensusAnalyser();
+// $analyser_object->load_csv_file("../resources/StateCensusData.csv");
+// $analyser_object->sort_alphabetically();
+>>>>>>> 3bd67f7a7b54e6dbf851ff988b5e5a46dc1753c5
 ?>
