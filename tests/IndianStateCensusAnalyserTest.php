@@ -1,12 +1,5 @@
 <?php
-/**
- * Setting error log file to store errors
- */
-ini_set("log_errors",TRUE);
-$log_file="error.log";
-ini_set("error_log",$log_file);
-
-date_default_timezone_set("Asia/Kolkata");      //Setting default timezone
+use PHPUnit\Framework\TestCase;
 
 /**
  * Including required files to test
@@ -18,13 +11,22 @@ require_once("../php/IndianCensusAnalyserException.php");
  * @class -  IndianStateCensusAnalyserTest
  * @functions  - Test methods to test assertions
  */
-class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
+class IndianStateCensusAnalyserTest extends TestCase
 {
   /**Variable declaration */
   static $state_census_csv_path="../resources/StateCensusData.csv";
   static $state_code_csv_path="../resources/StateCode.csv";
+  /**
+   * Declaring variable for wrong file path and type
+   */
+  static $wrong_census_csv_path="../resources/src/StateCensusData.csv";
+  static $wrong_census_csv_type="../resources/StateCensusData.txt";
+  static $wrong_census_csv_delimiter="../resources/StateCensusDataWrongDelimiter.csv";
+  static $wrong_code_csv_path="../resources/src/StateCode.csv";
+  static $wrong_code_csv_type="../resources/StateCode.txt";
+  static $wrong_code_csv_delimiter="../resources/StateCodeWrongDelimiter.csv";
+
   Protected $census_analyser;
-  Protected $code_analyser;
   Protected $analyser_exception;
 
   /**
@@ -32,8 +34,7 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
    */
   protected function setUp(): void
   {
-      $this->census_analyser=new StateCensusAnalyser();
-      $this->code_analyser= new CSVStateCensus();
+      $this->census_analyser=new CensusAnalyser();
       $this->analyser_exception= new IndianCensusAnalyserException();
   }
 
@@ -44,7 +45,7 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
   {
       try
       {
-        $this->assertEquals(29, $this->census_analyser->load_state_census_csv_data(self::$state_census_csv_path));
+        $this->assertEquals(29, $this->census_analyser->load_csv_file(self::$state_census_csv_path));
       }
       catch(Exception $err)
       {
@@ -53,17 +54,15 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
     
   }
   /**
-   * Test method to check StateCensusData.csv file exists or not by passing wrong filename
+   * Test method to check StateCensusData.csv file exists or not by passing wrong file path
   */
 
-  public function testStateCensusCSVFile()
+  public function testWrongStateCensusCSVFilePath()
   {
       try
       {
-        $file="../resources/StateCensusData1.csv";
-        $this->census_analyser->load_state_census_csv_data($file);
-        $this->assertFalse(file_exists($file));
-        throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_name_not_found));
+        $this->census_analyser->load_csv_file(self::$wrong_census_csv_path);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_census_csv_path));
       }
       catch(Exception $err)
       {
@@ -72,16 +71,32 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
   }
 
   /**
-   * Test method to check StateCensusData.csv file exists or not by passing wrong file extension
+   * Test method to check StateCensusData.csv file exists or not by passing wrong file type
   */
 
-  public function testStateCensusCSVFileType()
+  public function testWrongStateCensusCSVFileType()
   {
       try
       {
-        $file="../resources/StateCensusData.txt";
-        $this->assertFalse(file_exists($file));
-        throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_type_not_found));
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_census_csv_type));
+        // throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_type_not_found));
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+
+    /**
+   * Test method to check StateCensusData.csv file exists or not by passing wrong file delimiter
+  */
+
+  public function testWrongStateCensusCSVFileDelimiter()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$wrong_census_csv_delimiter);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_census_csv_delimiter));
       }
       catch(Exception $err)
       {
@@ -97,8 +112,7 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
   {
       try
       {
-        $csv_statcode_object= new CSVStateCensus();
-        $this->assertEquals(37, $this->code_analyser->load_state_code_csv_data(self::$state_code_csv_path));
+        $this->assertEquals(37, $this->census_analyser->load_csv_file(self::$state_code_csv_path));
       }
       catch(Exception $err)
       {
@@ -108,17 +122,15 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
   }
 
   /**
-   * Test method to check StateCensusData.csv file exists or not by passing wrong filename
+   * Test method to check StateCode.csv file exists or not by passing wrong file path
   */
 
-  public function testStateCodeCSVFile()
+  public function testWrongStateCodeCSVFilePath()
   {
       try
       {
-        $file="../resources/StateCode5.csv";
-        $this->code_analyser->load_state_code_csv_data($file);
-        $this->assertFalse(file_exists($file));
-        throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_name_not_found));
+        $this->census_analyser->load_csv_file(self::$wrong_code_csv_path);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_code_csv_path));
       }
       catch(Exception $err)
       {
@@ -127,17 +139,71 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
   }
 
   /**
-   * Test method to check StateCensusData.csv file exists or not by passing wrong file extension
+   * Test method to check StateCode.csv file exists or not by passing wrong file type
   */
 
-  public function testStateCodeCSVFileType()
+  public function testWrongStateCodeCSVFileType()
   {
       try
       {
-        $file="../resources/StateCode.txt";
-        $this->code_analyser->load_state_code_csv_data($file);
-        $this->assertFalse(file_exists($file));
-        throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_type_not_found));
+        $this->census_analyser->load_csv_file(self::$wrong_code_csv_type);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_code_csv_type));
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check StateCode.csv file exists or not by passing wrong file delimiter
+  */
+
+  public function testWrongStateCodeCSVFileDelimiter()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$wrong_code_csv_delimiter);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_code_csv_delimiter));
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+
+    /**
+   * Test method to check Starting State name of StateCensusData.csv file data 
+  */
+
+  public function testCheckStartStateOfStateCensusCSVFile()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$state_census_csv_path);
+        $this->census_analyser->sort_alphabetically();
+        $array=$this->census_analyser->data_array[0];
+        $state_name=$array['State'];
+        $this->assertEquals("Andhra Pradesh", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+    /**
+   * Test method to check Starting State name of StateCensusData.csv file data 
+  */
+
+  public function testCheckEndStateOfStateCensusCSVFile()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$state_census_csv_path);
+        $this->census_analyser->sort_alphabetically();
+        $length=count($this->census_analyser->data_array)-1;
+        $array=$this->census_analyser->data_array[$length];
+        $state_name=$array['State'];
+        $this->assertEquals("West Bengal", $state_name);
       }
       catch(Exception $err)
       {
@@ -145,5 +211,4 @@ class IndianStateCensusAnalyserTest extends PHPUnit\Framework\TestCase
       }
   }
 }
-
 ?>
