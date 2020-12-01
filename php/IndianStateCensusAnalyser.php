@@ -2,7 +2,32 @@
 /**Includeing required files */
 require_once("config.php");
 require_once("IndianCensusAnalyserException.php");
+/**
+ *@class - Class for writing Json file
+ */
+class SortCSV
+{
+    public function sort_state_census_data($delimeter, $csv_array)
+    {
+        //Created temporary empty array to store State names
+        $temp = array();
+        //Loop to get State names from data_array 
+        foreach ($csv_array as $key => $row)
+        {
+                    $temp[$key] = $row[$delimeter];
+        }
+        /**
+         * Used array_multisort function to sort data
+         * Passing State names and Sorting order so it will arrange data according to State names
+         */
+        array_multisort($temp, SORT_DESC, $csv_array);
 
+        $json_output_array=json_encode($csv_array);      //Storing data into Json format
+
+        return $json_output_array;
+
+    }
+}
 class CSVToJsonBuilder
 {
     /**
@@ -26,7 +51,7 @@ class CSVToJsonBuilder
  */
 class CensusAnalyser extends CSVToJsonBuilder
 {
-    //Declaring array with protected scope
+    //Declaring array
     Public $data_array=array();
     Public $file_header=array();
     Public $csv_file;
@@ -105,24 +130,30 @@ class CensusAnalyser extends CSVToJsonBuilder
     /**
      * Method to sort data alphabetically from CSV file according to state name
      */
-    function sort_alphabetically()
+    function sort_by_name()
     {
-        //Created temporary empty array to store State names
-        $state_names = array();
-        //Loop to get State names from data_array 
-        foreach ($this->data_array as $key => $row)
+        try
         {
-            $state_names[$key] = $row['State'];
+            if(!array_key_exists("State",$this->data_array[0]))
+            {
+                throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
+            }
+            else
+            {
+                $sort_object= new SortCSV();        //Creating Object to access methods from SortCSV class
+                $sorted_json_output=$sort_object->sort_state_census_data("State",$this->data_array);
+                
+                $json_output_file=basename($this->csv_name,".csv")."State.json";     //Created file name along with CSV file name
+
+                $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
+            }
         }
-        /**
-         * Used array_multisort function to sort data
-         * Passing State names and Sorting order so it will arrange data according to State names
-         */
-        array_multisort($state_names, SORT_ASC, $this->data_array);
-        /**
-         * Storing data into Json format
-         */
-        $json_output_array=json_encode($this->data_array);
+        catch(IndianCensusAnalyserException $err)
+        {
+            //Getting state_cencus_g error message
+            error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
+            return $err->getMessage();
+        }
 
     }
 
@@ -131,29 +162,47 @@ class CensusAnalyser extends CSVToJsonBuilder
      */
     function sort_by_population()
     {
-        //Created temporary empty array to store State names
-        $population = array();
-        //Loop to get State names from data_array 
-        foreach ($this->data_array as $key => $row)
+        try
         {
-            $population[$key] = $row['Population'];
+            if(!array_key_exists("Population",$this->data_array[1]))
+            {
+                throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
+            }
+            else
+            {
+                $sort_object= new SortCSV();        //Creating Object to access methods from SortCSV class
+                $sorted_json_output=$sort_object->sort_state_census_data("Population",$this->data_array);
+                
+                $json_output_file=basename($this->csv_name,".csv")."Population.json";     //Created file name along with CSV file name
+
+                $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
+            }
         }
-        /**
-         * Used array_multisort function to sort data
-         * Passing State names and Sorting order so it will arrange data according to State names
-         */
-        array_multisort($population, SORT_DESC, $this->data_array);
-
-        $json_output_array=json_encode($this->data_array);      //Storing data into Json format
-
-        $json_output_file=basename($this->csv_name,".csv").".json";     //Created file name along with CSV file name
-
-        $this->write_json($json_output_file,$json_output_array);        //Calling method to store Sorted data into Json file
-
-        return count($this->data_array);
+        catch(IndianCensusAnalyserException $err)
+        {
+            //Getting state_cencus_g error message
+            error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
+            return $err->getMessage();
+        }
+        finally
+        {
+            return count($this->data_array);
+        }
 
         
+    }
 
+    /**
+     * Method to sort data by most populate state from CSV file
+     */
+    function sort_by_density()
+    {
+        $sort_object= new SortCSV();        //Creating Object to access methods from SortCSV class
+        $sorted_json_output=$sort_object->sort_state_census_data("DensityPerSqKm",$this->data_array);
+
+        $json_output_file=basename($this->csv_name,".csv")."Density.json";     //Created file name along with CSV file name
+
+        $this->write_json($json_output_file,$sorted_json_output);    //Calling method to store Sorted data into Json file
 
     }
 
@@ -163,6 +212,7 @@ class CensusAnalyser extends CSVToJsonBuilder
  */
 $analyser_object=new CensusAnalyser();
 $analyser_object->load_csv_file("../resources/StateCensusData.csv");
-$analyser_object->sort_alphabetically();
+$analyser_object->sort_by_name();
 $analyser_object->sort_by_population();
+$analyser_object->sort_by_density();
 ?>

@@ -79,7 +79,6 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_census_csv_type));
-        // throw new Exception($this->analyser_exception->errorMessage($file, $this->analyser_exception->file_type_not_found));
       }
       catch(Exception $err)
       {
@@ -180,7 +179,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $this->census_analyser->sort_alphabetically();
+        $this->census_analyser->sort_by_name();
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andhra Pradesh", $state_name);
@@ -199,7 +198,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $this->census_analyser->sort_alphabetically();
+        $this->census_analyser->sort_by_name();
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
@@ -220,7 +219,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $this->census_analyser->sort_alphabetically();
+        $this->census_analyser->sort_by_name();
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andaman and Nicobar Islands", $state_name);
@@ -239,7 +238,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $this->census_analyser->sort_alphabetically();
+        $this->census_analyser->sort_by_name();
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
