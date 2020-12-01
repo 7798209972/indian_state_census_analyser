@@ -7,20 +7,17 @@ class IndianCensusAnalyserException extends Exception
   /**
    * Variable declaration
    */
-  Public $file_name_not_found;
-  Public $file_type_not_found;
-  Public $file_delimeter_not_found;
-  Public $message;
+  public const CENSUS_FILE_PROBLEM="Please enter valid file path";
 
   /**
    * Default constructor to assign values to variables
    */
-  public function __construct()
-  {
-    $this->file_name_not_found=1;
-    $this->file_type_not_found=2;
-    $this->file_delimeter_not_found=3;
-  }
+  // public function __construct()
+  // {
+  //   $this->file_name_not_found=1;
+  //   $this->file_type_not_found=2;
+  //   $this->file_delimeter_not_found=3;
+  // }
 
   /**
    * Method to get error message according to error type
