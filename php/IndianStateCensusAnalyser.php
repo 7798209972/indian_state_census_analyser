@@ -101,16 +101,33 @@ class CensusAnalyser
          * Storing data into Json format
          */
         $json_output_array=json_encode($this->data_array);
+<<<<<<< HEAD
 
     }
 
+=======
+    }
+
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
 }
 /**
  * Object Declaration
  */
+<<<<<<< HEAD
 $analyser_object=new CensusAnalyser();
 $analyser_object->load_csv_file("../resources/StateCensusData.csv");
 $analyser_object->sort_alphabetically();
 $analyser_object->load_csv_file("../resources/StateCode.csv");
 $analyser_object->sort_alphabetically();
+=======
+<<<<<<< HEAD
+$analyser_object=new CensusAnalyser();
+$analyser_object->load_csv_file("../resources/StateCensusData.csv");
+$analyser_object->sort_alphabetically();
+=======
+// $analyser_object=new CensusAnalyser();
+// $analyser_object->load_csv_file("../resources/StateCensusData.csv");
+// $analyser_object->sort_alphabetically();
+>>>>>>> 3bd67f7a7b54e6dbf851ff988b5e5a46dc1753c5
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
 ?>

@@ -148,12 +148,32 @@ class IndianStateCensusAnalyserTest extends TestCase
       {
         $this->census_analyser->load_csv_file(self::$wrong_code_csv_type);
         $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_code_csv_type));
+<<<<<<< HEAD
+=======
       }
       catch(Exception $err)
       {
         error_log($err->getMessage());
       }
   }
+  /**
+   * Test method to check StateCode.csv file exists or not by passing wrong file delimiter
+  */
+
+  public function testWrongStateCodeCSVFileDelimiter()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$wrong_code_csv_delimiter);
+        $this->assertEquals(IndianCensusAnalyserException::CENSUS_FILE_PROBLEM, $this->census_analyser->load_csv_file(self::$wrong_code_csv_delimiter));
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+<<<<<<< HEAD
   /**
    * Test method to check StateCode.csv file exists or not by passing wrong file delimiter
   */
@@ -172,6 +192,10 @@ class IndianStateCensusAnalyserTest extends TestCase
   }
 
   /**
+=======
+
+    /**
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
    * Test method to check Starting State name of StateCensusData.csv file data 
   */
 
@@ -190,7 +214,11 @@ class IndianStateCensusAnalyserTest extends TestCase
         error_log($err->getMessage());
       }
   }
+<<<<<<< HEAD
   /**
+=======
+    /**
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
    * Test method to check Starting State name of StateCensusData.csv file data 
   */
 
@@ -210,6 +238,7 @@ class IndianStateCensusAnalyserTest extends TestCase
         error_log($err->getMessage());
       }
   }
+<<<<<<< HEAD
 
   /**
    * Test method to check Starting State name of StateCode.csv file data 
@@ -250,5 +279,7 @@ class IndianStateCensusAnalyserTest extends TestCase
         error_log($err->getMessage());
       }
   }
+=======
+>>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
 }
 ?>
