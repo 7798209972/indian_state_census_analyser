@@ -171,7 +171,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       }
   }
 
-    /**
+  /**
    * Test method to check Starting State name of StateCensusData.csv file data 
   */
 
@@ -190,7 +190,7 @@ class IndianStateCensusAnalyserTest extends TestCase
         error_log($err->getMessage());
       }
   }
-    /**
+  /**
    * Test method to check Starting State name of StateCensusData.csv file data 
   */
 
@@ -199,6 +199,46 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
+        $this->census_analyser->sort_alphabetically();
+        $length=count($this->census_analyser->data_array)-1;
+        $array=$this->census_analyser->data_array[$length];
+        $state_name=$array['State'];
+        $this->assertEquals("West Bengal", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+
+  /**
+   * Test method to check Starting State name of StateCode.csv file data 
+  */
+
+  public function testCheckStartStateOfStateCodeCSVFile()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$state_code_csv_path);
+        $this->census_analyser->sort_alphabetically();
+        $array=$this->census_analyser->data_array[0];
+        $state_name=$array['State'];
+        $this->assertEquals("Andaman and Nicobar Islands", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check Starting State name of StateCode.csv file data 
+  */
+
+  public function testCheckEndStateOfStateCodeCSVFile()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$state_code_csv_path);
         $this->census_analyser->sort_alphabetically();
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];

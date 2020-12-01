@@ -101,6 +101,7 @@ class CensusAnalyser
          * Storing data into Json format
          */
         $json_output_array=json_encode($this->data_array);
+
     }
 
 }
@@ -109,5 +110,7 @@ class CensusAnalyser
  */
 $analyser_object=new CensusAnalyser();
 $analyser_object->load_csv_file("../resources/StateCensusData.csv");
+$analyser_object->sort_alphabetically();
+$analyser_object->load_csv_file("../resources/StateCode.csv");
 $analyser_object->sort_alphabetically();
 ?>
