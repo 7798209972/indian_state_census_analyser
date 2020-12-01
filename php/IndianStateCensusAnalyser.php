@@ -2,14 +2,35 @@
 /**Includeing required files */
 require_once("config.php");
 require_once("IndianCensusAnalyserException.php");
+
+class CSVToJsonBuilder
+{
+    /**
+     * Method to write output into an Json file
+     */
+    public function write_json($filename,$content)
+    {
+        /**
+         * Checking file exists or not.. if not file will be create runtime
+         */
+        $file_path="../json/".$filename;
+        if(!file_exists($file_path))
+        {
+            fopen($file_path,"w");
+        }
+        file_put_contents($file_path, $content);        //Putting content into json file
+    }
+}
 /**
  * Class Declaration
  */
-class CensusAnalyser
+class CensusAnalyser extends CSVToJsonBuilder
 {
     //Declaring array with protected scope
     Public $data_array=array();
     Public $file_header=array();
+    Public $csv_file;
+    Public $csv_name;
 
     //Method for welcome message
     function __construct()
@@ -24,6 +45,7 @@ class CensusAnalyser
      */
     function load_csv_file($file)
     {
+        $this->csv_name=$file;
         try
         {
             //Checking file exists or not
@@ -44,8 +66,8 @@ class CensusAnalyser
         catch(IndianCensusAnalyserException $err)
         {
             //Getting state_cencus_g error message
-            return $err->getMessage();
             error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
+            return $err->getMessage();
         }
     }
     /**
@@ -53,23 +75,23 @@ class CensusAnalyser
      */
     function get_data($file)
     {
-        $state_census_file = fopen($file, "r");      //Opening CSV file
-        $state_census_chunk_size = 1024*1024;        //Size(1MB) to chunk file 
+        $this->csv_file = fopen($file, "r");      //Opening CSV file
+        $chunk_size = 1024*1024;        //Size(1MB) to chunk file 
         $row=0;
-        if(!feof($state_census_file))
+        if(!feof($this->csv_file))
         {
             //Getting file data according to chunk size
-            while(($state_census_data = fgetcsv($state_census_file, $state_census_chunk_size)) !== false)
+            while(($csv_data = fgetcsv($this->csv_file, $chunk_size)) !== false)
             {
                 //Getting column names of CSV file
                 if (empty($this->file_header))
                 {
                     //Storing header of CSV file into an array
-                    $this->file_header = $state_census_data;
+                    $this->file_header = $csv_data;
                     continue;
                 }
                 //Storing data according to header column of csv file
-                foreach ($state_census_data as $k=>$value)
+                foreach ($csv_data as $k=>$value)
                 {
                     $this->data_array[$row][$this->file_header[$k]] = $value;
                 }
@@ -78,7 +100,7 @@ class CensusAnalyser
             return $row;
                     
         }
-        fclose($state_census_file);      //Closing File
+        fclose($this->csv_file);      //Closing File
     }
     /**
      * Method to sort data alphabetically from CSV file according to state name
@@ -101,33 +123,46 @@ class CensusAnalyser
          * Storing data into Json format
          */
         $json_output_array=json_encode($this->data_array);
-<<<<<<< HEAD
 
     }
 
-=======
+    /**
+     * Method to sort data by most populate state from CSV file
+     */
+    function sort_by_population()
+    {
+        //Created temporary empty array to store State names
+        $population = array();
+        //Loop to get State names from data_array 
+        foreach ($this->data_array as $key => $row)
+        {
+            $population[$key] = $row['Population'];
+        }
+        /**
+         * Used array_multisort function to sort data
+         * Passing State names and Sorting order so it will arrange data according to State names
+         */
+        array_multisort($population, SORT_DESC, $this->data_array);
+
+        $json_output_array=json_encode($this->data_array);      //Storing data into Json format
+
+        $json_output_file=basename($this->csv_name,".csv").".json";     //Created file name along with CSV file name
+
+        $this->write_json($json_output_file,$json_output_array);        //Calling method to store Sorted data into Json file
+
+        return count($this->data_array);
+
+        
+
+
     }
 
->>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
 }
 /**
  * Object Declaration
  */
-<<<<<<< HEAD
 $analyser_object=new CensusAnalyser();
 $analyser_object->load_csv_file("../resources/StateCensusData.csv");
 $analyser_object->sort_alphabetically();
-$analyser_object->load_csv_file("../resources/StateCode.csv");
-$analyser_object->sort_alphabetically();
-=======
-<<<<<<< HEAD
-$analyser_object=new CensusAnalyser();
-$analyser_object->load_csv_file("../resources/StateCensusData.csv");
-$analyser_object->sort_alphabetically();
-=======
-// $analyser_object=new CensusAnalyser();
-// $analyser_object->load_csv_file("../resources/StateCensusData.csv");
-// $analyser_object->sort_alphabetically();
->>>>>>> 3bd67f7a7b54e6dbf851ff988b5e5a46dc1753c5
->>>>>>> 7e6d8a51287d3afd8a8b5bc28f4731e04887715a
+$analyser_object->sort_by_population();
 ?>

@@ -1,164 +1,49 @@
-[01-Dec-2020 10:21:30 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:21:30 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:44:38 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:44:38 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:47:36 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:47:36 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:59:29 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 10:59:29 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:03:52 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:03:52 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:03:52 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:13:55 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:13:55 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:13:55 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:37:00 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:37:00 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:37:00 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:43:21 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:43:21 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:43:21 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that null matches expected 29.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:47:04 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Notice:  Undefined property: StateCensusAnalyser::$state_census_data_array in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 99
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   2. StateCensusAnalyser->sort() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:222
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Warning:  Invalid argument supplied for foreach() in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 99
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   2. StateCensusAnalyser->sort() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:222
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Warning:  array_multisort(): Argument #3 is expected to be an array or a sort flag in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 107
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   2. StateCensusAnalyser->sort() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:222
-[01-Dec-2020 11:48:06 Asia/Kolkata] PHP   3. array_multisort() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:107
-[01-Dec-2020 12:01:40 Asia/Kolkata] PHP Notice:  Undefined variable: no_of_records in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 28
-[01-Dec-2020 12:01:40 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 12:01:40 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 12:01:40 Asia/Kolkata] PHP   2. StateCensusAnalyser->load_state_census_csv_data() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:222
-[01-Dec-2020 12:01:40 Asia/Kolkata] PHP   3. StateCensusAnalyser->load_csv_data() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:89
-[01-Dec-2020 12:06:44 Asia/Kolkata] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 88
-[01-Dec-2020 12:06:44 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 12:06:44 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 12:06:44 Asia/Kolkata] PHP   2. StateCensusAnalyser->load_state_census_csv_data() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:221
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that null matches expected 29.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:18:13 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that null matches expected 29.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:18:46 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that null matches expected 29.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:20:29 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that null matches expected 29.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that null matches expected 'Please enter valid file path'.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:21:42 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:22:26 Asia/Kolkata] count(): Parameter must be an array or an object that implements Countable
-[01-Dec-2020 12:22:26 Asia/Kolkata] count(): Parameter must be an array or an object that implements Countable
-[01-Dec-2020 12:22:26 Asia/Kolkata] count(): Parameter must be an array or an object that implements Countable
-[01-Dec-2020 12:22:26 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:22:26 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:22:26 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:26:30 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:26:30 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:26:30 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:32:00 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method StateCensusAnalyser::load_csv_data() in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:89
-Stack trace:
-#0 D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php(230): StateCensusAnalyser->load_state_census_csv_data('../resources/St...')
-#1 D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\tests\IndianStateCensusAnalyserTest.php(7): require_once('D:\\xampp\\htdocs...')
-#2 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(52): include_once('D:\\xampp\\htdocs...')
-#3 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(43): PHPUnit\Util\FileLoader::load('D:\\xampp\\htdocs...')
-#4 phar://C:/bin/phpunit.phar/phpunit/Runner/StandardTestSuiteLoader.php(43): PHPUnit\Util\FileLoader::checkAndLoad('D:\\xampp\\htdocs...')
-#5 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(117): PHPUnit\Runner\StandardTestSuiteLoader->load('D:\\xampp\\htdocs...')
-#6 phar://C:/bin/phpunit.phar/ph in phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php on line 100
-[01-Dec-2020 12:32:19 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:32:19 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:32:19 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:42:14 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:42:14 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:42:14 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:45:26 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method CensusAnalyser::load_state_census_csv_data() in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:230
-Stack trace:
-#0 D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\tests\IndianStateCensusAnalyserTest.php(7): require_once()
-#1 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(52): include_once('D:\\xampp\\htdocs...')
-#2 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(43): PHPUnit\Util\FileLoader::load('D:\\xampp\\htdocs...')
-#3 phar://C:/bin/phpunit.phar/phpunit/Runner/StandardTestSuiteLoader.php(43): PHPUnit\Util\FileLoader::checkAndLoad('D:\\xampp\\htdocs...')
-#4 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(117): PHPUnit\Runner\StandardTestSuiteLoader->load('D:\\xampp\\htdocs...')
-#5 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(94): PHPUnit\Runner\BaseTestRunner->loadSuiteClass('D:\\xampp\\htdocs...')
-#6 phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php(113): PHPUnit\Runn in phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php on line 100
-[01-Dec-2020 12:46:54 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method CensusAnalyser::load_state_census_csv_data() in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:230
-Stack trace:
-#0 D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\tests\IndianStateCensusAnalyserTest.php(7): require_once()
-#1 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(52): include_once('D:\\xampp\\htdocs...')
-#2 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(43): PHPUnit\Util\FileLoader::load('D:\\xampp\\htdocs...')
-#3 phar://C:/bin/phpunit.phar/phpunit/Runner/StandardTestSuiteLoader.php(43): PHPUnit\Util\FileLoader::checkAndLoad('D:\\xampp\\htdocs...')
-#4 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(117): PHPUnit\Runner\StandardTestSuiteLoader->load('D:\\xampp\\htdocs...')
-#5 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(94): PHPUnit\Runner\BaseTestRunner->loadSuiteClass('D:\\xampp\\htdocs...')
-#6 phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php(113): PHPUnit\Runn in phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php on line 100
-[01-Dec-2020 12:55:19 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method CensusAnalyser::load_state_census_csv_data() in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:230
-Stack trace:
-#0 D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\tests\IndianStateCensusAnalyserTest.php(7): require_once()
-#1 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(52): include_once('D:\\xampp\\htdocs...')
-#2 phar://C:/bin/phpunit.phar/phpunit/Util/FileLoader.php(43): PHPUnit\Util\FileLoader::load('D:\\xampp\\htdocs...')
-#3 phar://C:/bin/phpunit.phar/phpunit/Runner/StandardTestSuiteLoader.php(43): PHPUnit\Util\FileLoader::checkAndLoad('D:\\xampp\\htdocs...')
-#4 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(117): PHPUnit\Runner\StandardTestSuiteLoader->load('D:\\xampp\\htdocs...')
-#5 phar://C:/bin/phpunit.phar/phpunit/Runner/BaseTestRunner.php(94): PHPUnit\Runner\BaseTestRunner->loadSuiteClass('D:\\xampp\\htdocs...')
-#6 phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php(113): PHPUnit\Runn in phar://C:/bin/phpunit.phar/phpunit/TextUI/Command.php on line 100
-[01-Dec-2020 12:55:58 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:55:58 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:55:58 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:07 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:07 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:07 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:59 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:59 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:57:59 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:59:48 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:59:48 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 12:59:48 Asia/Kolkata] Failed asserting that two strings are equal.
-[01-Dec-2020 13:21:18 Asia/Kolkata] PHP Notice:  Undefined variable: data_array in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 71
-[01-Dec-2020 13:21:18 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 13:21:18 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 13:21:18 Asia/Kolkata] PHP   2. CensusAnalyser->load_csv_file() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:207
-[01-Dec-2020 13:21:18 Asia/Kolkata] PHP   3. CensusAnalyser->get_data() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:31
-[01-Dec-2020 13:30:29 Asia/Kolkata] PHP Notice:  Undefined offset: 0 in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 102
-[01-Dec-2020 13:30:29 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 13:30:29 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 13:30:29 Asia/Kolkata] PHP   2. CensusAnalyser->sort() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:115
-[01-Dec-2020 13:45:39 Asia/Kolkata] PHP Warning:  Illegal string offset 'State' in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 104
-[01-Dec-2020 13:45:39 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 13:45:39 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 13:45:39 Asia/Kolkata] PHP   2. CensusAnalyser->sort_alphabetically() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:113
-[01-Dec-2020 13:46:24 Asia/Kolkata] PHP Warning:  Illegal string offset 'State' in D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php on line 104
-[01-Dec-2020 13:46:24 Asia/Kolkata] PHP Stack trace:
-[01-Dec-2020 13:46:24 Asia/Kolkata] PHP   1. {main}() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:0
-[01-Dec-2020 13:46:24 Asia/Kolkata] PHP   2. CensusAnalyser->sort_alphabetically() D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php:113
-[01-Dec-2020 13:51:15 Asia/Kolkata] Failed asserting that null matches expected 'Andhra Pradesh'.
-[01-Dec-2020 13:51:28 Asia/Kolkata] Failed asserting that null matches expected 'Utter Pradesh'.
-[01-Dec-2020 13:56:19 Asia/Kolkata] Failed asserting that null is identical to 'Andhra Pradesh'.
-[01-Dec-2020 13:57:07 Asia/Kolkata] Failed asserting that null is identical to 'Andhra Pradesh'.
-[01-Dec-2020 13:57:26 Asia/Kolkata] Failed asserting that null is identical to 'Andhra Pradesh'.
-[01-Dec-2020 14:00:42 Asia/Kolkata] Failed asserting that null matches expected 'Andhra Pradesh'.
-[01-Dec-2020 14:01:11 Asia/Kolkata] Failed asserting that null matches expected 'Andhra Pradesh'.
+[01-Dec-2020 18:52:22 Asia/Kolkata] Failed asserting that 37 matches expected 29.
+[01-Dec-2020 18:56:26 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:57:21 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 18:59:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:00:34 Asia/Kolkata] Failed asserting that 0 matches expected 29.
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:38 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
+[01-Dec-2020 19:01:49 Asia/Kolkata] Error : Please enter valid file path: On line:54:D:\xampp\htdocs\bridgelabz\indian_state_census_analyser\php\IndianStateCensusAnalyser.php
