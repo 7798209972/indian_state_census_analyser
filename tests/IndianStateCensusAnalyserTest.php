@@ -26,8 +26,11 @@ class IndianStateCensusAnalyserTest extends TestCase
   static $wrong_code_csv_type="../resources/StateCode.txt";
   static $wrong_code_csv_delimiter="../resources/StateCodeWrongDelimiter.csv";
 
+  static $us_census_csv="../resources/USCensusData.csv";
+
   Protected $census_analyser;
   Protected $analyser_exception;
+  Protected $sort_object;
 
   /**
    * Setup for declaring objects
@@ -36,6 +39,7 @@ class IndianStateCensusAnalyserTest extends TestCase
   {
       $this->census_analyser=new CensusAnalyser();
       $this->analyser_exception= new IndianCensusAnalyserException();
+      $this->sort_object=new SortCSV();
   }
 
   /**
@@ -179,8 +183,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $sort_object=new SortCSV();
-        $this->census_analyser->sort_acending("State", $sort_object);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $this->sort_object);
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andhra Pradesh", $state_name);
@@ -199,8 +203,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $sort_object=new SortCSV();
-        $this->census_analyser->sort_acending("State", $sort_object);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $this->sort_object);
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
@@ -221,8 +225,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $sort_object=new SortCSV();
-        $this->census_analyser->sort_acending("State", $sort_object);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $this->sort_object);
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andaman and Nicobar Islands", $state_name);
@@ -241,8 +245,7 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $sort_object=new SortCSV();
-        $this->census_analyser->sort_acending("State", $sort_object);
+        $this->census_analyser->sort_acending("State", $this->sort_object);
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
@@ -263,13 +266,139 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $sort_object=new SortCSV();
-        $this->assertEquals(29, $this->census_analyser->sort_descending("sort_descending", $sort_object));
+        $this->assertEquals(29, $this->census_analyser->sort_descending("Population", $this->sort_object));
       }
       catch(Exception $err)
       {
         error_log($err->getMessage());
       }
   }
+
+  /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckStartStateOfUSCensusCSVFileSortByPopulation()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Population", $this->sort_object);
+        $array=$this->census_analyser->data_array[0];
+        $state_name=$array['State'];
+        $this->assertEquals("Alabama", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckEndStateOfUSCensusCSVFileSortByPopulation()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Population", $this->sort_object);
+        $length=count($this->census_analyser->data_array)-1;
+        $array=$this->census_analyser->data_array[$length];
+        $state_name=$array['State'];
+        $this->assertEquals("Wyoming", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckStartStateOfUSCensusCSVFileSortByDensity()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Population Density", $this->sort_object);
+        $array=$this->census_analyser->data_array[0];
+        $state_name=$array['State'];
+        $this->assertEquals("District of Columbia", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckEndStateOfUSCensusCSVFileSortByDensity()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Population Density", $this->sort_object);
+        $length=count($this->census_analyser->data_array)-1;
+        $array=$this->census_analyser->data_array[$length];
+        $state_name=$array['State'];
+        $this->assertEquals("Alaska", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+    /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckStartStateOfUSCensusCSVFileSortByArea()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Land area", $this->sort_object);
+        $array=$this->census_analyser->data_array[0];
+        $state_name=$array['State'];
+        $this->assertEquals("Alaska", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+  /**
+   * Test method to check Starting State name of USCensusData.csv file data 
+  */
+
+  public function testToCheckEndStateOfUSCensusCSVFileSortByArea()
+  {
+      try
+      {
+        $this->census_analyser->load_csv_file(self::$us_census_csv);
+        $this->sort_object=new SortCSV();
+        $this->census_analyser->sort_descending("Land area", $this->sort_object);
+        $length=count($this->census_analyser->data_array)-1;
+        $array=$this->census_analyser->data_array[$length];
+        $state_name=$array['State'];
+        $this->assertEquals("District of Columbia", $state_name);
+      }
+      catch(Exception $err)
+      {
+        error_log($err->getMessage());
+      }
+  }
+
+
+
 }
 ?>

@@ -150,10 +150,6 @@ class CensusAnalyser extends CSVToJsonBuilder
             error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
             return $err->getMessage();
         }
-        finally
-        {
-            return count($this->data_array);
-        }
 
         
     }
