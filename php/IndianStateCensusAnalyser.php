@@ -165,13 +165,14 @@ class CensusAnalyser extends CSVToJsonBuilder
 $analyser_object=new CensusAnalyser();
 $sort_object=new SortCSV();
 /** Passing SortCSV class object */
+/** for StateCensusData */
+$analyser_object->load_csv_file("../resources/StateCensusData.csv");
+$analyser_object->sort_descending("Population", $sort_object);
+$analyser_object->sort_descending("DensityPerSqKm", $sort_object);
+
+/** for StateCensusData */
 $analyser_object->load_csv_file("../resources/USCensusData.csv");
 $analyser_object->sort_descending("Population", $sort_object);
-$analyser_object->sort_acending("State",$sort_object);
-$analyser_object->sort_descending("Housing units", $sort_object);
-$analyser_object->sort_descending("Total area", $sort_object);
-$analyser_object->sort_descending("Water area", $sort_object);
-$analyser_object->sort_descending("Land area", $sort_object);
 $analyser_object->sort_descending("Population Density", $sort_object);
 $analyser_object->sort_descending("Housing Density", $sort_object);
 
