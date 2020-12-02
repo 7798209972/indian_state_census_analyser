@@ -2,73 +2,9 @@
 /**Includeing required files */
 require_once("config.php");
 require_once("IndianCensusAnalyserException.php");
-/**
- *@class - Class for writing Json file
- */
-class SortCSV
-{
-    public function sort_state_census_data_desc($delimeter, $csv_array)
-    {
-        //Created temporary empty array to store State names
-        $temp = array();
-        //Loop to get State names from data_array 
-        foreach ($csv_array as $key => $row)
-        {
-                    $temp[$key] = $row[$delimeter];
-        }
-        /**
-         * Used array_multisort function to sort data
-         * Passing State names and Sorting order so it will arrange data according to State names
-         */
-        array_multisort($temp, SORT_DESC, $csv_array);
+require_once("SortCSV.php");
+require_once("CSVToJsonBuilder.php");
 
-        $json_output_array=json_encode($csv_array);      //Storing data into Json format
-
-        return $json_output_array;
-
-    }
-    /**
-     * Method to sort data in ascending order
-     */
-    public function sort_state_census_data_asc($delimeter, $csv_array)
-    {
-        //Created temporary empty array to store State names
-        $temp = array();
-        //Loop to get State names from data_array 
-        foreach ($csv_array as $key => $row)
-        {
-                    $temp[$key] = $row[$delimeter];
-        }
-        /**
-         * Used array_multisort function to sort data
-         * Passing State names and Sorting order so it will arrange data according to State names
-         */
-        array_multisort($temp, SORT_ASC, $csv_array);
-
-        // $json_output_array=json_encode($csv_array);      //Storing data into Json format
-
-        return $csv_array;
-
-    }
-}
-class CSVToJsonBuilder
-{
-    /**
-     * Method to write output into an Json file
-     */
-    public function write_json($filename,$content)
-    {
-        /**
-         * Checking file exists or not.. if not file will be create runtime
-         */
-        $file_path="../json/".$filename;
-        if(!file_exists($file_path))
-        {
-            fopen($file_path,"w");
-        }
-        file_put_contents($file_path, $content);        //Putting content into json file
-    }
-}
 /**
  * Class Declaration
  */
@@ -167,7 +103,7 @@ class CensusAnalyser extends CSVToJsonBuilder
             {
                 $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $this->data_array=$sort_object->sort_state_census_data_asc("State",$temp);
+                $this->data_array=$sort_object->sort_csv_data_ascending("State",$temp);
                 
                 $sorted_json_output=json_encode($this->data_array);
                 $json_output_file=basename($this->csv_name,".csv")."State.json";     //Created file name along with CSV file name
@@ -200,7 +136,7 @@ class CensusAnalyser extends CSVToJsonBuilder
             {
                 $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_state_census_data_desc("Population",$this->data_array);
+                $sorted_json_output=$sort_object->sort_csv_data_descending("Population",$this->data_array);
                 
                 $json_output_file=basename($this->csv_name,".csv")."Population.json";     //Created file name along with CSV file name
 
@@ -237,7 +173,7 @@ class CensusAnalyser extends CSVToJsonBuilder
             {
                 $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_state_census_data_desc("DensityPerSqKm",$this->data_array);
+                $sorted_json_output=$sort_object->sort_csv_data_descending("DensityPerSqKm",$this->data_array);
                 
                 $json_output_file=basename($this->csv_name,".csv")."DensityPerSqKm.json";     //Created file name along with CSV file name
 
@@ -268,7 +204,7 @@ class CensusAnalyser extends CSVToJsonBuilder
             {
                 $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_state_census_data_desc("AreaInSqKm",$this->data_array);
+                $sorted_json_output=$sort_object->sort_csv_data_descending("AreaInSqKm",$this->data_array);
                 
                 $json_output_file=basename($this->csv_name,".csv")."AreaInSqKm.json";     //Created file name along with CSV file name
 
