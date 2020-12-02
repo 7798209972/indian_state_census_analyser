@@ -179,7 +179,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $this->census_analyser->sort_by_name();
+        $sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $sort_object);
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andhra Pradesh", $state_name);
@@ -198,7 +199,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $this->census_analyser->sort_by_name();
+        $sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $sort_object);
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
@@ -219,7 +221,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $this->census_analyser->sort_by_name();
+        $sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $sort_object);
         $array=$this->census_analyser->data_array[0];
         $state_name=$array['State'];
         $this->assertEquals("Andaman and Nicobar Islands", $state_name);
@@ -238,7 +241,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_code_csv_path);
-        $this->census_analyser->sort_by_name();
+        $sort_object=new SortCSV();
+        $this->census_analyser->sort_acending("State", $sort_object);
         $length=count($this->census_analyser->data_array)-1;
         $array=$this->census_analyser->data_array[$length];
         $state_name=$array['State'];
@@ -259,7 +263,8 @@ class IndianStateCensusAnalyserTest extends TestCase
       try
       {
         $this->census_analyser->load_csv_file(self::$state_census_csv_path);
-        $this->assertEquals(29, $this->census_analyser->sort_by_population());
+        $sort_object=new SortCSV();
+        $this->assertEquals(29, $this->census_analyser->sort_descending("sort_descending", $sort_object));
       }
       catch(Exception $err)
       {

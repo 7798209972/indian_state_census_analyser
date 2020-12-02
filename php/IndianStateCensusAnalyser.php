@@ -11,8 +11,8 @@ require_once("CSVToJsonBuilder.php");
 class CensusAnalyser extends CSVToJsonBuilder
 {
     //Declaring array
-    Public $data_array=array();
-    Public $file_header=array();
+    Public $data_array;
+    Public $file_header;
     Public $csv_file;
     Public $csv_name;
 
@@ -29,6 +29,8 @@ class CensusAnalyser extends CSVToJsonBuilder
      */
     function load_csv_file($file)
     {
+        $this->data_array=array();
+        $this->file_header=array();
         $this->csv_name=$file;
         try
         {
@@ -89,24 +91,24 @@ class CensusAnalyser extends CSVToJsonBuilder
     /**
      * Method to sort data alphabetically from CSV file according to state name
      */
-    function sort_by_name()
+    function sort_acending($delimiter, SortCSV $sort_object)
     {
         try
         {
-            $temp=$this->data_array;
+            $temp=$this->data_array;        //Storing temporary array
             /** Checking File parameter exists or not in CSV data */
-            if(!array_key_exists("State",$temp[0]))
+            if(!in_array($delimiter,$this->file_header))
             {
                 throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
             }
             else
             {
-                $sort_object=new SortCSV();     //Created Object of SortCsv class
+                // $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $this->data_array=$sort_object->sort_csv_data_ascending("State",$temp);
+                $this->data_array=$sort_object->sort_csv_data_ascending($delimiter,$temp);
                 
                 $sorted_json_output=json_encode($this->data_array);
-                $json_output_file=basename($this->csv_name,".csv")."State.json";     //Created file name along with CSV file name
+                $json_output_file=basename($this->csv_name,".csv").$delimiter.".json";     //Created file name along with CSV file name
 
                 $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
             }
@@ -123,22 +125,21 @@ class CensusAnalyser extends CSVToJsonBuilder
     /**
      * Method to sort data by most populate state from CSV file
      */
-    function sort_by_population()
+    function sort_descending($delimiter, SortCSV $sort_object)
     {
         try
         {
             /** Checking File parameter exists or not in CSV data */
-            if(!array_key_exists("Population",$this->data_array[1]))
+            if(!in_array($delimiter,$this->file_header))
             {
                 throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
             }
             else
             {
-                $sort_object=new SortCSV();     //Created Object of SortCsv class
                 /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_csv_data_descending("Population",$this->data_array);
+                $sorted_json_output=$sort_object->sort_csv_data_descending($delimiter,$this->data_array);
                 
-                $json_output_file=basename($this->csv_name,".csv")."Population.json";     //Created file name along with CSV file name
+                $json_output_file=basename($this->csv_name,".csv").$delimiter.".json";     //Created file name along with CSV file name
 
                 $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
             }
@@ -157,79 +158,18 @@ class CensusAnalyser extends CSVToJsonBuilder
         
     }
 
-    /**
-     * Method to sort data by DensityPerSqm from CSV file
-     */
-    function sort_by_density()
-    {
-        try
-        {
-            /** Checking File parameter exists or not in CSV data */
-            if(!array_key_exists("DensityPerSqKm",$this->data_array[3]))
-            {
-                throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
-            }
-            else
-            {
-                $sort_object=new SortCSV();     //Created Object of SortCsv class
-                /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_csv_data_descending("DensityPerSqKm",$this->data_array);
-                
-                $json_output_file=basename($this->csv_name,".csv")."DensityPerSqKm.json";     //Created file name along with CSV file name
-
-                $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
-            }
-        }
-        catch(IndianCensusAnalyserException $err)
-        {
-            //Getting state_cencus_g error message
-            error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
-            return $err->getMessage();
-        }
-    }
-
-    /**
-     * Method to sort data by AreaInSqKm from CSV file
-     */
-    function sort_by_area()
-    {
-        try
-        {
-            /** Checking File parameter exists or not in CSV data */
-            if(!array_key_exists("AreaInSqKm",$this->data_array[2]))
-            {
-                throw new IndianCensusAnalyserException(IndianCensusAnalyserException::CENSUS_DATA_NOT_FOUND);       //Throw exception
-            }
-            else
-            {
-                $sort_object=new SortCSV();     //Created Object of SortCsv class
-                /** Calling method to Sort Data */
-                $sorted_json_output=$sort_object->sort_csv_data_descending("AreaInSqKm",$this->data_array);
-                
-                $json_output_file=basename($this->csv_name,".csv")."AreaInSqKm.json";     //Created file name along with CSV file name
-
-                $this->write_json($json_output_file,$sorted_json_output);        //Calling method to store Sorted data into Json file
-            }
-        }
-        catch(IndianCensusAnalyserException $err)
-        {
-            //Getting state_cencus_g error message
-            error_log("Error : ".$err->getMessage().": On line:".$err->getLine().":".$err->getFile());
-            return $err->getMessage();
-        }
-    }
-
 }
 /**
  * Object Declaration
  */
 $analyser_object=new CensusAnalyser();
-// $analyser_object->load_csv_file("../resources/StateCensusData.csv");
-
-// $analyser_object->sort_by_name();
-// $analyser_object->sort_by_population();
-// $analyser_object->sort_by_density();
-// $analyser_object->sort_by_area();
+$analyser_object->load_csv_file("../resources/StateCensusData.csv");
+$sort_object=new SortCSV();
+$analyser_object->sort_acending("State",$sort_object);
+$analyser_object->sort_descending("Population", $sort_object);
+$analyser_object->sort_acending("AreaInSqKm",$sort_object);
+$analyser_object->sort_descending("DensityPerSqKm", $sort_object);
 
 $analyser_object->load_csv_file("../resources/USCensusData.csv");
+$analyser_object->sort_descending("Population", $sort_object);
 ?>
