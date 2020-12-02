@@ -224,10 +224,12 @@ class CensusAnalyser extends CSVToJsonBuilder
  * Object Declaration
  */
 $analyser_object=new CensusAnalyser();
-$analyser_object->load_csv_file("../resources/StateCensusData.csv");
+// $analyser_object->load_csv_file("../resources/StateCensusData.csv");
 
-$analyser_object->sort_by_name();
-$analyser_object->sort_by_population();
-$analyser_object->sort_by_density();
-$analyser_object->sort_by_area();
+// $analyser_object->sort_by_name();
+// $analyser_object->sort_by_population();
+// $analyser_object->sort_by_density();
+// $analyser_object->sort_by_area();
+
+$analyser_object->load_csv_file("../resources/USCensusData.csv");
 ?>
